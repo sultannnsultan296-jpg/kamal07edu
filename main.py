@@ -6,7 +6,7 @@ from datetime import datetime
 
 # 1. Konfigurasi AI & Database
 genai.configure(api_key=st.secrets["GEMINI_KEY"])
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel('gemini-15-flash')
 URL_SHEET = st.secrets["GSHEET_URL"]
 
 # 2. Setup UI
