@@ -16,7 +16,20 @@ st.markdown("<h1 style='text-align: center; color: #3b82f6;'>🏫 kamal07edu Stu
 # 3. Sidebar Navigasi
 role = st.sidebar.radio("Masuk Sebagai:", ["Guru", "Siswa"])
 
-if role == "Guru":
+if role == "Guru": (# --- TOMBOL DIAGNOSA KONEKSI ---
+st.sidebar.write("---")
+if st.sidebar.button("🔍 Cek Koneksi AI"):
+    try:
+        # Menggunakan model terbaru yang lebih stabil
+        test_model = genai.GenerativeModel('gemini-1.5-flash')
+        response = test_model.generate_content("Cek sistem kamal07edu. Apakah kamu aktif?")
+        
+        st.sidebar.success("✅ Koneksi Berhasil!")
+        st.sidebar.info(f"Respon AI: {response.text}")
+    except Exception as e:
+        st.sidebar.error("❌ Koneksi Gagal")
+        st.sidebar.warning(f"Detail Error: {e}")
+        st.sidebar.write("Tips: Periksa kembali apakah GEMINI_KEY di 'Advanced Settings' sudah benar."))
     st.sidebar.subheader("Menu Guru")
     menu = st.sidebar.selectbox("Pilih Tugas:", ["Buat Materi AI", "Cek Jawaban Siswa"])
     
