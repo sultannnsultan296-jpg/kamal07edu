@@ -5,9 +5,9 @@ import pandas as pd
 from datetime import datetime
 
 # 1. Konfigurasi AI & Database
-genai.configure(api_key=st.secrets["GEMINI_KEY"])
-model = genai.GenerativeModel('gemini-15-flash')
-URL_SHEET = st.secrets["GSHEET_URL"]
+genai.configure(api_key=st.secrets["AIzaSyAGP2tkJX8pNtzWp-uRcZRDbWhos1jKYPg"])
+model = genai.GenerativeModel('gemini-pro')
+URL_SHEET = st.secrets["https://docs.google.com/spreadsheets/d/1Yhh__UF6nvUogeRxJwttFtOzVCjvXHvRUvfv_jVLV1s/edit?usp=sharing"]
 
 # 2. Setup UI
 st.set_page_config(page_title="kamal07edu Studio", layout="wide")
@@ -24,7 +24,7 @@ if role == "Guru":
         topik = st.text_input("Topik Pembelajaran:")
         jenjang = st.selectbox("Tingkat:", ["SD", "SMP", "SMA"])
         if st.button("Generate Materi"):
-            res = model.generate_content(f"Buat materi singkat & 3 soal HOTS tentang {topik} untuk {jenjang}")
+            res = model.generate_content(f"Buat materi singkat & 5 soal HOTS tentang {topik} untuk {jenjang}")
             st.write(res.text)
             st.session_state['draft'] = res.text
             
